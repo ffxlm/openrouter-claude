@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenRouter Proxy Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="glow-orb"></div>
+                <h1>OpenRouter <span>Proxy</span></h1>
+            </div>
+            <div class="budget-panel">
+                <div class="stat">
+                    <span class="label">Today's Spend</span>
+                    <span class="value" id="todaySpend">$0.0000</span>
+                </div>
+                <div class="stat">
+                    <span class="label">Daily Budget</span>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span class="value budget" id="dailyBudget">$2.00</span>
+                        <button onclick="editBudget()" class="edit-btn" title="Edit Budget"><i class="fa-solid fa-pen"></i></button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="active-model-section">
+            <h2>Current Active Model</h2>
+            <div class="active-card" id="activeModelCard">
+                <div class="loader"></div>
+            </div>
+        </section>
+
+        <section class="explore-section">
+            <div class="section-header">
+                <h2>Available Models</h2>
+                <div class="controls">
+                    <input type="text" id="searchInput" placeholder="Search models (e.g. claude, llama)...">
+                    <select id="sortSelect" class="filter-select">
+                        <option value="default">Sort: Default</option>
+                        <option value="price_asc">Price: Low to High (Paid Only)</option>
+                        <option value="price_desc">Price: High to Low</option>
+                    </select>
+                    <button id="filterFavBtn" class="filter-btn" title="Favorites Only"><i class="fa-solid fa-star" style="color:#FBBF24;"></i></button>
+                    <button id="filterFreeBtn" class="filter-btn">Free Only</button>
+                </div>
+            </div>
+            
+            <div class="models-grid" id="modelsGrid">
+                <div class="loader"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">Model updated successfully!</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
